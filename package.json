@@ -5,7 +5,7 @@
 	"author": "Pratik Infanto J",
 	"license": "MIT",
 	"scripts": {
-		"start": "yarn dev:start",
+		"start": "yarn prod:start",
 		"debug": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node --inspect src/server",
 		"dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
 		"dev:wds": "webpack-dev-server --progress",
