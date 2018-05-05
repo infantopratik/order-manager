@@ -12,10 +12,10 @@ Order Management Application
 8. App will be running on http://localhost:8000 OR http://127.0.0.1:8000
 
 # API Endpoints
-##Orders
+## Orders
 1. **_GET_** -> /api/orders - Lists all orders
 2. **_POST_** -> /api/order - add an order
 
-##Users
+## Users
 1. **_POST_** -> /api/user - register a new user
 2. **_GET_** -> /api/user/details - get user details
