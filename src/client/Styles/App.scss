@@ -1,0 +1,22 @@
+@import "./external/react-select.min.css";
+@import "./partials/_overrides";
+@import "./partials/_accordion";
+@import "Utilities";
+@import '~antd/dist/antd.css';
+
+body {
+	height: 100%;
+	width: 100%;
+	background-color: #f7f7f7;
+}
+
+/* Loader */
+
+.loader {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 99999;
+}

@@ -1,0 +1,29 @@
+#root {
+	.ui.container {
+		@media screen and (min-width: 1024px) and (max-width: 1369px) {
+			width: 1000px;
+		}
+	}
+
+	.ui.form {
+		.Select--multi,
+		.Select--single
+		{
+			.Select-control .Select-input input {
+				width: 100%;
+				background: none transparent;
+				border: 0 none;
+				box-shadow: none;
+				cursor: default;
+				display: inline-block;
+				font-family: inherit;
+				font-size: inherit;
+				margin: 0;
+				outline: 0;
+				line-height: 17px;
+				padding: 8px 0 12px;
+				-webkit-appearance: none;
+			}
+		}
+	}
+}

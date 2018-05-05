@@ -1,0 +1,61 @@
+.ui.accordion {
+	padding: 0;
+	> .title > .icon.dropdown {
+		display: none;
+	}
+
+	&.styled {
+		width: 100%;
+	}
+
+	&.show-icon > .title {
+		display: flex;
+		align-items: center;
+		> .icon.dropdown {
+			display: block;
+		}
+		> .trigger {
+			width: 100%;
+		}
+	}
+
+	&.ui.accordion {
+		.ui.grid{
+			margin: 0;
+			.column {
+				// padding: 0;
+			}
+		}
+		.title:not(.ui) {
+			border-top: 1px solid #ccc;
+			position: relative;
+			padding: 0;
+			border: 0;
+		}
+		.content:not(.ui) {
+		}
+		&.no-accordion-data {
+			.title{
+				cursor: initial;
+				a{
+					cursor: pointer;
+				}
+			}
+			.content{
+				display: none;
+			}
+		}
+		&:not(.no-accordion-data){
+			.title:hover {
+				background: #f9f9f9;
+			}
+		}
+		.label.ribbon{
+			position: absolute;
+			top: 0.5rem;
+			left: -1.2em;
+			padding-left: 1.2rem;
+			z-index: 10;
+		}
+	}
+}
