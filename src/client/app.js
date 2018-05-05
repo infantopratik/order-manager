@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 import './Styles/App.scss';
 
-import Routes from './Routes';
+import Routes from './routes';
 
 class App extends Component {
 	constructor(props) {
