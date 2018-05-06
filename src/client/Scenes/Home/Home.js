@@ -22,7 +22,8 @@ class Home extends Component {
 			grandTotal: 0.00,
 			newProdName: '',
 			newProdquantity: null,
-			newProdPricePerKG: null
+			newProdPricePerKG: null,
+			visible: false
 		}
 	}
 
@@ -140,6 +141,18 @@ class Home extends Component {
 		})
 	}
 
+	helpModal = (e) => {
+    this.setState({visible: true});
+  }
+
+  handleOk = (e) => {
+    this.setState({visible: false});
+  }
+
+  handleCancel = (e) => {
+    this.setState({visible: false});
+  }
+
 	render() {
 		const columns = [{
 		  title: 'S.No',
@@ -174,7 +187,10 @@ class Home extends Component {
 			<Layout>
 	      <Header className="header">
 	      	<h3 className="logoText">Order Manager</h3>
-	      	<Button type="primary" onClick={this.logout} ghost>Log Out</Button>
+	      	<div>
+	      		<Button type="primary" className="help-btn" onClick={this.helpModal} ghost>Help</Button>
+	      		<Button type="primary" onClick={this.logout} ghost>Log Out</Button>
+	      	</div>
 	      </Header>
 	      <Content className="content">
 	      	<div className="contentHead">
@@ -193,6 +209,16 @@ class Home extends Component {
 	      		columns={columns}
 	      		grandTotal={this.state.grandTotal}
 	      	/>
+	      	<Modal
+	          title="Instructions"
+	          visible={this.state.visible}
+	          onOk={this.handleOk}
+	          onCancel={this.handleCancel}
+	        >
+	          <p>1. Enter the Product name, quantity and price per kilogram in the appropriate fields.</p>
+	          <p>2. Press the 'enter' key when on the price field to add the next product.</p>
+	          <p>3. After entering all the products, click on 'Process Order', to complete the order.</p>
+	        </Modal>
 	      </Content>
 	    </Layout>
 		)
