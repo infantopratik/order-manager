@@ -12,6 +12,7 @@
 		"prod:build": "rimraf lib dist && babel src -d lib --presets=es2015,react,stage-2 --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
 		"prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
 		"prod:stop": "pm2 delete server",
+		"prod:reload": "sudo yarn prod:stop && sudo yarn prod:build && sudo yarn prod:start",
 		"lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
 		"test": "jest",
 		"heroku-postbuild": "yarn prod:build"
