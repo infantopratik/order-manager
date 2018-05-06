@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Layout, Input, Icon, notification } from 'antd';
+import { Button, Layout, Input, Icon, notification, Modal } from 'antd';
 const { Header, Footer, Content } = Layout;
 import axios from 'axios';
 import './Home.scss';
@@ -27,7 +27,7 @@ class Home extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://35.231.35.182/api/checkToken')
+		axios.get('/api/checkToken')
 		.then(res=>{
 			console.log('res', res);
 			if(res && res.status !== 200) {
@@ -42,7 +42,7 @@ class Home extends Component {
 	logout = e => {
 		e.preventDefault();
     this.setState({loading: true});
-    axios.post('http://35.231.35.182/api/logout')
+    axios.post('/api/logout')
 	  .then(res => {
 	  	// console.log('res', res);
 	  	if (res && res.status === 200) {
@@ -106,7 +106,7 @@ class Home extends Component {
 			grandTotal: this.state.grandTotal,
 			customerName: this.name.input.value
 		}
-		axios.post('http://35.231.35.182/api/order', order)
+		axios.post('/api/order', order)
 		.then(res=>{
 			// console.log('res', res);
 			if(res && res.status === 200) {
@@ -126,13 +126,16 @@ class Home extends Component {
 				const args = {
 			    message: 'Success',
 			    description: 'Order has been created successfully',
-			    duration: 3,
+			    duration: 2,
 			  };
 			  notification.open(args);
 			}
 		})
 		.catch(err=>{
-			alert('Error while processing order!');
+			Modal.warning({
+		    title: 'Unable to create order',
+		    content: 'Error while processing order!'
+		  });
   		this.setState({loading: false});
 		})
 	}
@@ -151,16 +154,19 @@ class Home extends Component {
 		}, {
 		  title: 'Quantity (in KG)',
 		  dataIndex: 'quantity',
+		  className: 'column-quantity',
 		  key: 'quantity',
 		  render: (text) => text?text:<Input type="number" value={this.state.newProdquantity} onChange={e => this.handleChange(e, 'newProdquantity')}/>
 		}, {
 		  title: 'Price (per KG)',
 		  dataIndex: 'pricePerKG',
+		  className: 'column-pricePerKG',
 		  key: 'pricePerKG',
 		  render: (text) => text?text:<Input type="number" value={this.state.newProdPricePerKG} onChange={e => this.handleChange(e, 'newProdPricePerKG')} onPressEnter={e => this.addProduct(e)}/>
 		}, {
 		  title: 'Total Price',
 		  dataIndex: 'price',
+		  className: 'column-price',
 		  key: 'price',
 		  render: (text) => text?text:''
 		}];

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input, Button, Checkbox, Card } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Card, Modal } from 'antd';
 import './Login.scss';
 import axios from 'axios';
 const FormItem = Form.Item;
@@ -14,7 +14,7 @@ class Login extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://35.231.35.182/api/checkToken')
+		axios.get('/api/checkToken')
 		.then(res=>{
 			console.log('res', res);
 			if(res && res.status === 200) {
@@ -29,7 +29,7 @@ class Login extends Component {
 	login = (e) => {
     e.preventDefault();
     this.setState({loading: true});
-    axios.post('http://35.231.35.182/api/login', {
+    axios.post('/api/login', {
 	    email: this.email.input.value,
 	    password: this.password.input.value
 	  })
@@ -40,8 +40,10 @@ class Login extends Component {
 	  	}
 	  })
 	  .catch(err => {
-	  	// console.log('err', err);
-	  	alert('Invalid Credentials!');
+	  	Modal.warning({
+		    title: 'Unable to login',
+		    content: 'Invalid Credentials'
+		  });
   		this.setState({loading: false});
 	  })
   }

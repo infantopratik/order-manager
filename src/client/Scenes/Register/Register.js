@@ -16,7 +16,7 @@ class Register extends Component {
 	register = (e) => {
     e.preventDefault();
     this.setState({loading: true});
-    axios.post('http://35.231.35.182/api/user', {
+    axios.post('/api/user', {
 	    email: this.email.input.value,
 	    password: this.password.input.value,
 	    phone: this.phone.input.value,
@@ -25,11 +25,9 @@ class Register extends Component {
 	  .then(res => {
 	  	// console.log('res', res);
 	  	if (res && res.status === 200) {
-    		Modal.confirm({
+			  Modal.success({
 			    title: 'Registration Successful',
 			    content: 'Please login to continue.',
-			    okText: 'Login',
-			    cancelText: 'Cancel',
 			    onOk: ()=>{
 			    	window.location = "#/login";
 			    }
@@ -37,8 +35,10 @@ class Register extends Component {
 	  	}
 	  })
 	  .catch(err => {
-	  	// console.log('err', err);
-	  	alert('Insufficient Details!');
+	  	Modal.warning({
+		    title: 'Unable to resiter',
+		    content: 'Invalid Details. Please fill all the fields correctly.'
+		  });
   		this.setState({loading: false});
 	  })
   }

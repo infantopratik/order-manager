@@ -3,3 +3,15 @@
   font-weight: bold;
   font-size: 20px;
 }
+th.column-quantity,
+td.column-quantity {
+  text-align: right !important;
+}
+th.column-pricePerKG,
+td.column-pricePerKG {
+  text-align: right !important;
+}
+th.column-price,
+td.column-price {
+  text-align: right !important;
+}
