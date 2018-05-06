@@ -16,7 +16,7 @@ class Register extends Component {
 	register = (e) => {
     e.preventDefault();
     this.setState({loading: true});
-    axios.post('http://localhost:8000/api/user', {
+    axios.post('http://35.231.35.182/api/user', {
 	    email: this.email.input.value,
 	    password: this.password.input.value,
 	    phone: this.phone.input.value,

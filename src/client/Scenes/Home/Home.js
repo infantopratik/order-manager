@@ -27,7 +27,7 @@ class Home extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:8000/api/checkToken')
+		axios.get('http://35.231.35.182/api/checkToken')
 		.then(res=>{
 			console.log('res', res);
 			if(res && res.status !== 200) {
@@ -42,7 +42,7 @@ class Home extends Component {
 	logout = e => {
 		e.preventDefault();
     this.setState({loading: true});
-    axios.post('http://localhost:8000/api/logout')
+    axios.post('http://35.231.35.182/api/logout')
 	  .then(res => {
 	  	// console.log('res', res);
 	  	if (res && res.status === 200) {
@@ -106,7 +106,7 @@ class Home extends Component {
 			grandTotal: this.state.grandTotal,
 			customerName: this.name.input.value
 		}
-		axios.post('http://localhost:8000/api/order', order)
+		axios.post('http://35.231.35.182/api/order', order)
 		.then(res=>{
 			// console.log('res', res);
 			if(res && res.status === 200) {

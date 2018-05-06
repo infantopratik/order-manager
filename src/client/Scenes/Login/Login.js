@@ -14,7 +14,7 @@ class Login extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:8000/api/checkToken')
+		axios.get('http://35.231.35.182/api/checkToken')
 		.then(res=>{
 			console.log('res', res);
 			if(res && res.status === 200) {
@@ -29,7 +29,7 @@ class Login extends Component {
 	login = (e) => {
     e.preventDefault();
     this.setState({loading: true});
-    axios.post('http://localhost:8000/api/login', {
+    axios.post('http://35.231.35.182/api/login', {
 	    email: this.email.input.value,
 	    password: this.password.input.value
 	  })
