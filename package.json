@@ -5,7 +5,7 @@
 	"author": "Pratik Infanto J",
 	"license": "MIT",
 	"scripts": {
-		"start": "yarn dev:start",
+		"start": "yarn prod:start",
 		"debug": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node --inspect src/server",
 		"dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
 		"dev:wds": "webpack-dev-server --progress",
@@ -13,7 +13,8 @@
 		"prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
 		"prod:stop": "pm2 delete server",
 		"lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
-		"test": "jest"
+		"test": "jest",
+		"heroku-postbuild": "yarn prod:build"
 	},
 	"devDependencies": {
 		"babel-cli": "^6.26.0",
