@@ -1,5 +1,6 @@
 # Order Manager
-Order Management Application
+## Order Management Application
+_A minimalistic order taking app for vegetable and fruit shops. Built using React, Express and MongoDB. This project is running at http://35.231.35.182/ _
 
 # Setup
 1. Install NodeJS, MongoDB, Git SCM
